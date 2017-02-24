@@ -8,15 +8,13 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-
-
     <!-- 	<tx:annotation-driven /> -->
-    <context:component-scan base-package="ua.kalahgame.repository" />
+    <context:component-scan base-package="ua.atm.repository" />
      	<context:property-placeholder
      		system-properties-mode="OVERRIDE"
             location="classpath:jdbc.properties
             " />
-    <jpa:repositories base-package="ua.kalahgame.repository" />
+    <jpa:repositories base-package="ua.atm.repository" />
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="url" value="${jdbc.url}" />
@@ -33,7 +31,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
-        <property name="packagesToScan" value="ua.kalahgame.domain" />
+        <property name="packagesToScan" value="ua.atm.domain" />
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>

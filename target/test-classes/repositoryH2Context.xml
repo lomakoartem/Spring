@@ -11,15 +11,19 @@
                 http://www.springframework.org/schema/tx/spring-tx.xsd
                 http://www.springframework.org/schema/jdbc
                 http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
-    <jpa:repositories base-package="ua.kalahgame.repository" />
-    <jdbc:embedded-database id="dataSource" type="H2" />
+    <jpa:repositories base-package="ua.atm.repository" />
+    <jdbc:embedded-database id="dataSource" type="H2">
+   <!-- <jdbc:script location="classpath:create-db.sql" />
+    <jdbc:script location="classpath:insert-data.sql" />-->
+    </jdbc:embedded-database>
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
-        <property name="packagesToScan" value="ua.kalahgame" />
+        <property name="packagesToScan" value="ua.atm" />
+
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
@@ -28,9 +32,11 @@
                 <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
+
     </bean>
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" />
+
 </beans>

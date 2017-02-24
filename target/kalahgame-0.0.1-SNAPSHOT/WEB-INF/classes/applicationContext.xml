@@ -12,5 +12,6 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 <tx:annotation-driven/>
     <context:component-scan
-            base-package="ua.kalahgame.service, ua.kalahgame.infrastructure"/>
+            base-package="ua.atm.service, ua.atm.infrastructure"/>
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 </beans>
